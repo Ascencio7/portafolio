@@ -1,11 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portafolio | Vladimir Ascencio</title>
+    <title>Jonathan Vladimir Ascencio | Desarrollador de Software</title>
     
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
     <!-- Link para ver el logo de la pagina en la pestana -->
         <link rel="icon" type="image/png" href="images/logo.png">
@@ -14,12 +15,13 @@
     
     <!--HEADER-->
     <header class="active">
-        <a href="#" class="logo">Inicio</a>
+        <a href="#inicio" class="logo" data-section="inicio">Portafolio<span>.</span></a>
         <i class='bx bx-menu' id="menu-icon"></i>
         <nav>
-            <a href="#" class="active">Inicio</a>
-            <a href="#">Habilidades</a>
-            <a href="#">Portafolio</a>
+            <a href="#inicio" class="active" data-section="inicio">Inicio</a>
+            <a href="#habilidades" data-section="habilidades">Habilidades</a>
+            <a href="#experiencia" data-section="experiencia">Experiencia</a>
+            <a href="#proyectos" data-section="proyectos">Proyectos</a>
         </nav>
     </header>
 
@@ -34,17 +36,27 @@
     </div>
 
     <!--Seccion de inicio-->
-    <section class="home active">
+    <section class="home active" id="inicio" data-page="inicio">
         <div class="home-detail">
-            <h1>Vladimir Ascencio</h1>
+            <h1>Jonathan Vladimir Ascencio</h1>
+            <p class="eyebrow">DESARROLLADOR DE SOFTWARE · FULL STACK &amp; BACKEND JUNIOR</p>
             <h2>Soy 
-                <span style="--i:4;" data-text="Programador Móvil Junior">Programador Móvil Junior</span>
-                <span style="--i:3;" data-text="Programador Back-End">Programador Back-End Junior</span>
-                <span style="--i:2;" data-text="Programador Front-End">Programador Front-End Junior</span>
-                <span style="--i:1;" data-text="Gestor de Base de Datos">Gestor de Base de Datos Junior</span>
+                <span style="--i:4;" data-text="Desarrollador Full Stack">Desarrollador Full Stack</span>
+                <span style="--i:3;" data-text="Desarrollador Backend">Desarrollador Backend</span>
+                <span style="--i:2;" data-text="Especialista en datos">Especialista en datos</span>
+                <span style="--i:1;" data-text="Desarrollador de APIs">Desarrollador de APIs</span>
                 <span></span>
             </h2>
-            <p>Estudiante de Ingeniería en Desarrollo de Software con experiencia en proyectos web usando Python, Django y bases de datos SQL/MongoDB. Apasionado por crear soluciones eficientes y escalables, con formación en Full Stack y Linux.</p>
+            <p>Estudiante avanzado de Ingeniería en Desarrollo de Software con experiencia en sistemas institucionales, migración de datos, servicios web y aplicaciones web y de escritorio. Me enfoco en automatizar procesos y construir soluciones mantenibles.</p>
+            <div class="home-actions">
+                <a class="btn" href="#experiencia" data-section-link="experiencia">Conocer mi experiencia <i class='bx bx-right-arrow-alt'></i></a>
+                <a class="text-link" href="https://github.com/Ascencio7" target="_blank" rel="noopener">Ver GitHub <i class='bx bx-arrow-up-right-stroke'></i></a>
+            </div>
+            <div class="quick-stats">
+                <div><strong>14</strong><span>proyectos realizados</span></div>
+                <div><strong>4</strong><span>años de formación</span></div>
+                <div><strong>100%</strong><span>curiosidad por aprender</span></div>
+            </div>
             <div class="btn-sci">
                 <div class="sci">
                     <a href="https://github.com/Ascencio7" target="_blank"><i class='bx bxl-github' ></i></a>
@@ -64,15 +76,19 @@
     </section>
 
     <!--Seccion de mis servicios-->
-    <section class="services">
-        <h2 class="heading">Áreas de <span>Especialización</span></h2>
+    <section class="services" id="habilidades" data-page="habilidades">
+        <div class="section-intro">
+            <p class="eyebrow">CAPACIDADES</p>
+            <h2 class="heading">Lo que puedo <span>aportar</span></h2>
+            <p>Una combinación de desarrollo de interfaces, lógica de negocio y datos para convertir necesidades en soluciones mantenibles.</p>
+        </div>
         <div class="services-container">
             <div class="services-box">
                 <div class="icon">
                     <i class='bx bx-code-alt'></i>
                     <a href="#"><i class='bx bx-arrow-back' ></i></a>
                 </div>
-                <h3>Disarrollo Web Full Stack</h3>
+                <h3>Desarrollo web Full Stack</h3>
                 <p>
                     Desarrollo de aplicaciones web dinámicas utilizando HTML, CSS y JavaScript en el frontend,
                     y Python con Django en el backend. Implementación de bases de datos SQL y MongoDB,
@@ -98,10 +114,10 @@
                     <i class='bx bx-desktop'></i>
                     <a href="#"><i class='bx bx-arrow-back'></i></a>
                 </div>
-                <h3>Interfaces Modernas con WPF</h3>
+                <h3>APIs y servicios web</h3>
                 <p>
-                    Desarrollo de interfaces modernas y estructuradas en C# utilizando Windows Presentation Foundation (WPF),
-                    aplicando principios de diseño para crear aplicaciones más visuales, organizadas y fáciles de usar.
+                    Desarrollo de servicios web institucionales y APIs con arquitecturas REST y SOAP,
+                    incluyendo autenticación, validación de credenciales e integración entre sistemas.
                 </p>
             </div>
 
@@ -110,10 +126,10 @@
                     <i class='bx bxs-data'></i>
                     <a href="#"><i class='bx bx-arrow-back'></i></a>
                 </div>
-                <h3>Gestión de Bases de Datos</h3>
+                <h3>Datos y migraciones</h3>
                 <p>
-                    Diseño y administración de bases de datos relacionales y no relacionales (SQL, MySQL y MongoDB).
-                    Creación de consultas, modelado de datos y optimización para aplicaciones web y de escritorio.
+                    Diseño, administración y migración de bases de datos relacionales y NoSQL.
+                    Experiencia con Oracle 12c, SQL Server, PostgreSQL, MySQL, MongoDB y SQLite.
                 </p>
             </div>
             
@@ -122,10 +138,10 @@
                     <i class='bx bxl-git'></i>
                     <a href="#"><i class='bx bx-arrow-back'></i></a>
                 </div>
-                <h3>Control de Versiones y Entornos Linux</h3>
+                <h3>Automatización y entornos</h3>
                 <p>
-                    Uso de Git y GitHub para control de versiones y trabajo colaborativo.
-                    Manejo básico de sistemas Linux y línea de comandos para entornos de desarrollo.
+                    Uso de Git y GitHub, Linux y Bash scripting para organizar el trabajo,
+                    automatizar tareas y mantener flujos de desarrollo reproducibles.
                 </p>
             </div>
             
@@ -144,9 +160,52 @@
         </div>
     </section>
     
+    <section class="experience" id="experiencia" data-page="experiencia">
+        <div class="section-intro">
+            <p class="eyebrow">TRAYECTORIA PROFESIONAL</p>
+            <h2 class="heading">Experiencia que genera <span>resultados</span></h2>
+            <p>Trabajo con foco en automatización, calidad de datos y soluciones que mejoran procesos reales.</p>
+        </div>
+        <div class="experience-list">
+            <article class="experience-item featured-experience">
+                <div class="experience-date">MAY 2026 — SEP 2026</div>
+                <div class="experience-content">
+                    <p class="experience-role">Desarrollador de Software</p>
+                    <h3>Instituto Salvadoreño del Seguro Social <span>ISSS</span></h3>
+                    <p>Diseñé e implementé un sistema web de correspondencia para automatizar el flujo documental, el control de tiempos de respuesta y el archivo oficial entre dependencias administrativas.</p>
+                    <div class="tech"><span>Oracle 12c</span><span>SQL Server</span><span>SOAP / REST</span><span>C#</span><span>Pruebas unitarias</span></div>
+                    <ul>
+                        <li>Lideré la migración de SQL Server a Oracle 12c mediante scripts DDL/DML, transformación y depuración de datos.</li>
+                        <li>Desarrollé servicios para autenticación de firmas médicas y validación de credenciales de especialistas.</li>
+                        <li>Participé en análisis de requerimientos, diseño de soluciones y pruebas del ciclo de vida del software.</li>
+                    </ul>
+                </div>
+            </article>
+            <article class="experience-item">
+                <div class="experience-date">JUN 2025 — OCT 2025</div>
+                <div class="experience-content">
+                    <p class="experience-role">Pasante de Contabilidad</p>
+                    <h3>Alcaldía Municipal de Nuevo Lourdes</h3>
+                    <p>Automaticé procesos administrativos mediante la digitalización de flujos financieros y estructuré bases de datos operativas para agilizar consultas e informes.</p>
+                </div>
+            </article>
+            <article class="experience-item">
+                <div class="experience-date">JUN 2022 — AGO 2022</div>
+                <div class="experience-content">
+                    <p class="experience-role">Pasante de Recursos Humanos</p>
+                    <h3>Hilasal Textil S.A. de C.V.</h3>
+                    <p>Coordiné la auditoría y clasificación digital de expedientes de personal, optimizando el acceso a la información del área.</p>
+                </div>
+            </article>
+        </div>
+    </section>
+
     <!-- Seccion del portafolio -->
-    <section class="portfolio">
-        <h2 class="heading">Últimos <span>Proyectos</span></h2>
+    <section class="portfolio" id="proyectos" data-page="proyectos">
+        <div class="section-intro section-intro-row">
+            <div><p class="eyebrow">TRABAJO SELECCIONADO</p><h2 class="heading">Proyectos que he <span>construido</span></h2></div>
+            <p>Una muestra de aplicaciones web, sistemas de escritorio y experimentos que reflejan mi evolución técnica.</p>
+        </div>
 
         <div class="portfolio-container">
             <!-- Card.. -->
@@ -441,6 +500,19 @@
         </div>
     </section>
 
+
+    <footer class="site-footer">
+        <div class="footer-brand">
+            <a href="#inicio" class="footer-logo" data-section="inicio">Jonathan Vladimir Ascencio Ramos<span>.</span></a>
+            <p>Desarrollador de Software · Full Stack &amp; Backend Junior</p>
+        </div>
+        <div class="footer-socials">
+            <a href="https://github.com/Ascencio7" target="_blank" rel="noopener" aria-label="GitHub"><i class='bx bxl-github'></i></a>
+            <a href="https://discord.com/users/vl_ascencio" target="_blank" rel="noopener" aria-label="Discord"><i class='bx bxl-discord-alt'></i></a>
+            <a href="https://www.instagram.com/vl_ascencio?igsh=bXA5Z3dnOTlpb29t" target="_blank" rel="noopener" aria-label="Instagram"><i class='bx bxl-instagram-alt'></i></a>
+        </div>
+        <p class="footer-copy">© 2026 Jonathan Vladimir Ascencio</p>
+    </footer>
 
     <script src="js/script.js" ></script>
 </body>

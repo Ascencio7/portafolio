@@ -1,122 +1,41 @@
-const navLinks = document.querySelectorAll('header nav a');
-const logoLink = document.querySelector('.logo');
-const sections = document.querySelectorAll('section');
+const header = document.querySelector('header');
 const menuIcon = document.querySelector('#menu-icon');
 const navbar = document.querySelector('header nav');
+const navLinks = document.querySelectorAll('[data-section]');
+const sectionLinks = document.querySelectorAll('[data-section-link]');
+const pages = document.querySelectorAll('[data-page]');
 
+const setActivePage = (pageName, updateUrl = true) => {
+    const validPage = document.querySelector(`[data-page="${pageName}"]`) ? pageName : 'inicio';
+
+    pages.forEach((page) => page.classList.toggle('active', page.dataset.page === validPage));
+    navLinks.forEach((link) => link.classList.toggle('active', link.dataset.section === validPage));
+
+    if (updateUrl) {
+        history.pushState({ page: validPage }, '', `#${validPage}`);
+    }
+
+    navbar.classList.remove('active');
+    menuIcon.classList.remove('bx-x');
+    header.classList.add('active');
+};
+
+const handleNavigation = (event) => {
+    event.preventDefault();
+    const target = event.currentTarget.dataset.section || event.currentTarget.dataset.sectionLink;
+    setActivePage(target);
+};
+
+navLinks.forEach((link) => link.addEventListener('click', handleNavigation));
+sectionLinks.forEach((link) => link.addEventListener('click', handleNavigation));
 
 menuIcon.addEventListener('click', () => {
     menuIcon.classList.toggle('bx-x');
     navbar.classList.toggle('active');
 });
 
-const activePage = () => {
-    const header = document.querySelector('header');
-    const barsBox = document.querySelector('.bars-box');
-
-    header.classList.remove('active');
-    setTimeout(() =>{
-        header.classList.add('active');
-    },1100);
-
-
-    navLinks.forEach(link => {
-        link.classList.remove('active');
-    });
-
-    barsBox.classList.remove('active');
-    setTimeout(() => {
-        barsBox.classList.add('active');
-    },1100);
-
-    sections.forEach(section => {
-        section.classList.remove('active');
-    });
-
-    menuIcon.classList.remove('bx-x');
-    navbar.classList.remove('active');
-}
-
-navLinks.forEach((link, idx) => {
-    link.addEventListener('click', () => {
-        if(!link.classList.contains('active')){
-            activePage();
-            link.classList.add('active');
-            setTimeout(() =>{
-                sections[idx].classList.add('active');
-            },1100);
-        }
-    });
+window.addEventListener('popstate', () => {
+    setActivePage(window.location.hash.slice(1), false);
 });
 
-
-logoLink.addEventListener('click', () =>{
-    if(!navLinks[0].classList.contains('active')){
-        activePage();
-        navLinks[0].classList.add('active');
-        setTimeout(() =>{
-            sections[0].classList.add('active');
-        },1100);
-    }
-});
-
-// El color verde del boton pase a otro al dar click
-const resumeBtns = document.querySelectorAll('.resume-btn');
-
-resumeBtns.forEach((btn,idx) =>{
-    btn.addEventListener('click', () => {
-        const resumeDetails = document.querySelectorAll('.resume-detail');
-
-        resumeBtns.forEach(btn =>{
-            btn.classList.remove('active');
-        });
-        btn.classList.add('active');
-
-        resumeDetails.forEach(detail => {
-            detail.classList.remove('active');
-        });
-        resumeDetails[idx].classList.add('active');
-    });
-});
-
-// para que el carrusel de portfolios se mueva al dar clic en los botones
-const arrowRight = document.querySelector('.portfolio-box .navigation .arrow-right');
-const arrowLeft = document.querySelector('.portfolio-box .navigation .arrow-left');
-
-let index = 0; // indice inicial
-
-const activePortfolio = () => {
-    const imgSlide = document.querySelector('.portfolio-carousel .img-slide');
-    const portfolioDetails = document.querySelectorAll('.portfolio-detail');
-
-    imgSlide.style.transform = `translateX(calc(${index * -100}% - ${index * 2}rem))`;
-    
-    portfolioDetails.forEach(detail => {
-        detail.classList.remove('active');
-    });
-    portfolioDetails[index].classList.add('active'); // Mostrar la información del portfolio correspondiente al índice actual 
-}
-
-arrowRight.addEventListener('click', () => {
-    if (index < 4) {
-        index++;
-        arrowLeft.classList.remove('disabled'); // Habilitar la flecha izquierda si avanzamos
-    }
-    else{
-        index = 5;
-        arrowRight.classList.add('disabled'); // Deshabilitar la flecha derecha si llegamos al final
-    }
-    activePortfolio();
-});
-
-arrowLeft.addEventListener('click', () => {
-    if (index > 1) {
-        index--;
-        arrowRight.classList.remove('disabled'); // Habilitar la flecha derecha si retrocedemos
-    }
-    else{
-        index = 0;
-        arrowLeft.classList.add('disabled'); // Deshabilitar la flecha izquierda si llegamos al principio
-    }
-    activePortfolio();
-});
+setActivePage(window.location.hash.slice(1) || 'inicio', false);
